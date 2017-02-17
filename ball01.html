@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Canvas-ball</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+	}
+</style>
+<script>
+WINDOW_WIDTH = 1024;
+WINDOW_HEIGHT = 550;
+
+window.onload = function(){
+
+	var canvas1 = document.getElementById('canvas1');
+	var canvas2 = document.getElementById('canvas2');
+	var context1 = canvas1.getContext('2d');
+	var context2 = canvas2.getContext('2d');
+
+	canvas1.width = WINDOW_WIDTH;
+	canvas1.height = WINDOW_HEIGHT;
+	canvas2.width = WINDOW_WIDTH;
+	canvas2.height = WINDOW_HEIGHT;
+
+	render(100,100,400,400,'#058',context1);
+	render(100,100,800,200,'#850',context2);
+
+	console.log(context1.canvas.width);
+	console.log(context1.canvas.height);
+
+	setTimeout(function(){
+		context1.clearRect(0, 0, context1.canvas.width, context1.canvas.height);
+	},1000);
+
+
+};
+
+function render(orgX,orgY,tarX,tarY,color,cxt){
+
+	cxt.beginPath();
+		cxt.moveTo(orgX,orgY);
+		cxt.lineTo(tarX,tarY);
+		cxt.lineWidth = 5;
+		cxt.strokeStyle = color;
+		cxt.stroke();
+	cxt.closePath();
+
+}
+
+</script>
+</head>
+<body>
+
+<canvas id="canvas1" widwth="1024" height="768" style="display:block; border:1px #999 solid; margin:20px auto;">
+	当前浏览器不支持Canvas，请更换浏览器
+</canvas>
+
+<canvas id="canvas2" widwth="1024" height="768" style="display:block; border:1px #999 solid; margin:0 auto;">
+	当前浏览器不支持Canvas，请更换浏览器
+</canvas>
+
+</body>
+</html>
